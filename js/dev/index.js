@@ -742,7 +742,8 @@ const marquee = () => {
         return sizeEl;
       });
       const $multiplyWidth = $parentNodeWidth * 2 + initialSizeElements;
-      for (; sumSize < $multiplyWidth; index += 1) {
+      const MAX_DUPLICATES = 100;
+      for (; sumSize < $multiplyWidth && counterDuplicateElements < MAX_DUPLICATES; index += 1) {
         if (!$childrenEl[index]) index = 0;
         const $cloneNone = $childrenEl[index].cloneNode(true);
         const $lastElement = $marqueeInner.children[index];
@@ -779,7 +780,7 @@ const marquee = () => {
     onWindowWidthResize(onResize);
   });
 };
-marquee();
+window.addEventListener("load", marquee);
 if (isMobile.any()) {
   document.documentElement.setAttribute("data-fls-mobile", "");
 }
