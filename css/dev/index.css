@@ -728,6 +728,9 @@ body {
   .button {
     font-size: 1.25rem;
   }
+  [data-fls-marquee-item] img {
+    height: 2.25rem;
+  }
   .brands {
     padding-top: 2.1875rem;
   }
@@ -786,6 +789,9 @@ body {
   }
   .button {
     font-size: clamp( 1.25rem , 1.1690647482rem  +  0.3597122302vw , 1.5rem );
+  }
+  [data-fls-marquee-item] img {
+    height: clamp( 2.25rem , 1.6834532374125rem  +  2.5179856115vw , 4rem );
   }
   .brands {
     padding-top: clamp( 2.1875rem , 2.08633093525rem  +  0.4496402878vw , 2.5rem );
@@ -1022,6 +1028,9 @@ body {
   }
   .button--border {
     font-size: 1.25rem;
+  }
+  [data-fls-marquee-item] img {
+    height: 4rem;
   }
   .brands {
     padding-top: 2.5rem;
