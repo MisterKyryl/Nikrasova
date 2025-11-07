@@ -1011,7 +1011,7 @@ body {
   .footer {
     padding-bottom: 4.375rem;
   }
-  .button {
+  :where(.button) {
     font-size: 1.25rem;
   }
   [data-fls-marquee-item] img {
@@ -1126,7 +1126,7 @@ body {
   .footer {
     padding-bottom: clamp( 3.75rem , 4.57733812949375rem  +  -0.8992805755vw , 4.375rem );
   }
-  .button {
+  :where(.button) {
     font-size: clamp( 1.25rem , 1.1690647482rem  +  0.3597122302vw , 1.5rem );
   }
   [data-fls-marquee-item] img {
@@ -1440,7 +1440,7 @@ body {
   .footer {
     padding-bottom: 3.75rem;
   }
-  .button {
+  :where(.button) {
     font-size: 1.5rem;
   }
   .button--border {
