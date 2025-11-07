@@ -5106,6 +5106,42 @@ const marquee = () => {
   });
 };
 window.addEventListener("load", marquee);
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.querySelector(".popular__body");
+  const button = document.querySelector(".popular__button");
+  if (!body || !button) return;
+  const items = Array.from(body.querySelectorAll(".item-popular"));
+  if (!items.length) return;
+  let currentRows = 0;
+  let itemsPerRow = 1;
+  function getItemsPerRow() {
+    const computed = getComputedStyle(body);
+    const gridTemplateColumns = computed.gridTemplateColumns.split(" ");
+    return gridTemplateColumns.length;
+  }
+  function getRowsToShow() {
+    const width = window.innerWidth;
+    if (width >= 992) return 2;
+    if (width >= 768) return 3;
+    return 4;
+  }
+  function updateVisibleItems(reset = true) {
+    itemsPerRow = getItemsPerRow();
+    const rowsToShow = getRowsToShow();
+    if (reset) currentRows = rowsToShow;
+    const visibleCount = currentRows * itemsPerRow;
+    items.forEach((item, i) => {
+      item.style.display = i < visibleCount ? "" : "none";
+    });
+    button.style.display = visibleCount >= items.length ? "none" : "";
+  }
+  button.addEventListener("click", () => {
+    currentRows += getRowsToShow();
+    updateVisibleItems(false);
+  });
+  updateVisibleItems();
+  window.addEventListener("resize", () => updateVisibleItems());
+});
 if (isMobile.any()) {
   document.documentElement.setAttribute("data-fls-mobile", "");
 }
