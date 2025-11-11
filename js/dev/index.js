@@ -4772,6 +4772,59 @@ function updateSideClasses(swiper) {
   });
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
+function showMore() {
+  const showMoreBlocks = document.querySelectorAll("[data-fls-showmore]");
+  showMoreBlocks.forEach((block) => {
+    const body = block.querySelector("[data-fls-showmore-body]");
+    const button = block.querySelector("[data-fls-showmore-button]");
+    if (!body || !button) return;
+    const items = Array.from(body.children);
+    if (!items.length) return;
+    let currentRows = 0;
+    let itemsPerRow = 1;
+    const config = parseShowmoreConfig(block.dataset.flsShowmore);
+    function parseShowmoreConfig(value) {
+      const matches = value.match(/\[[^\]]+\]|[^,\s]+/g) || [];
+      return matches.map((v) => {
+        if (v.startsWith("[")) {
+          const [bp, rows] = v.replace(/[\[\]\s]/g, "").split(",");
+          return { bp: parseFloat(bp), rows: parseInt(rows) };
+        }
+        return { default: true, rows: parseInt(v) };
+      });
+    }
+    function getRowsToShow() {
+      const width = window.innerWidth;
+      let rows = config.find((c) => c.default)?.rows || 2;
+      for (const c of config) {
+        if (!c.default && width <= c.bp) rows = c.rows;
+      }
+      return rows;
+    }
+    function getItemsPerRow() {
+      const computed = getComputedStyle(body);
+      const gridCols = computed.gridTemplateColumns.split(" ");
+      return gridCols.length || 1;
+    }
+    function updateVisibleItems(reset = true) {
+      itemsPerRow = getItemsPerRow();
+      const rowsToShow = getRowsToShow();
+      if (reset) currentRows = rowsToShow;
+      const visibleCount = currentRows * itemsPerRow;
+      items.forEach((item, i) => {
+        item.style.display = i < visibleCount ? "" : "none";
+      });
+      button.style.display = visibleCount >= items.length ? "none" : "";
+    }
+    button.addEventListener("click", () => {
+      currentRows += getRowsToShow();
+      updateVisibleItems(false);
+    });
+    window.addEventListener("resize", () => updateVisibleItems());
+    updateVisibleItems();
+  });
+}
+window.addEventListener("load", showMore);
 function menuInit() {
   document.addEventListener("click", function(e) {
     if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
@@ -4781,14 +4834,18 @@ function menuInit() {
   });
 }
 document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY || window.pageYOffset;
+document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
-  if (scrollY > 0) {
-    html.setAttribute("data-fls-header-scroll-active", "");
-  } else {
-    html.removeAttribute("data-fls-header-scroll-active");
-  }
+  window.addEventListener(
+    "scroll",
+    () => html.toggleAttribute("data-fls-header-scroll-active", window.scrollY > 0)
+  );
+  const observer = new MutationObserver(
+    () => html.toggleAttribute("data-fls-scrolllock", !!document.querySelector(".spollers-menu__title.--spoller-active"))
+  );
+  document.querySelectorAll(".spollers-menu__title").forEach(
+    (el) => observer.observe(el, { attributes: true, attributeFilter: ["class"] })
+  );
 });
 class DynamicAdapt {
   constructor() {
@@ -5106,43 +5163,10 @@ const marquee = () => {
   });
 };
 window.addEventListener("load", marquee);
-document.addEventListener("DOMContentLoaded", () => {
-  const body = document.querySelector(".popular__body");
-  const button = document.querySelector(".popular__button");
-  if (!body || !button) return;
-  const items = Array.from(body.querySelectorAll(".item-popular"));
-  if (!items.length) return;
-  let currentRows = 0;
-  let itemsPerRow = 1;
-  function getItemsPerRow() {
-    const computed = getComputedStyle(body);
-    const gridTemplateColumns = computed.gridTemplateColumns.split(" ");
-    return gridTemplateColumns.length;
-  }
-  function getRowsToShow() {
-    const width = window.innerWidth;
-    if (width >= 992) return 2;
-    if (width >= 768) return 3;
-    return 4;
-  }
-  function updateVisibleItems(reset = true) {
-    itemsPerRow = getItemsPerRow();
-    const rowsToShow = getRowsToShow();
-    if (reset) currentRows = rowsToShow;
-    const visibleCount = currentRows * itemsPerRow;
-    items.forEach((item, i) => {
-      item.style.display = i < visibleCount ? "" : "none";
-    });
-    button.style.display = visibleCount >= items.length ? "none" : "";
-  }
-  button.addEventListener("click", () => {
-    currentRows += getRowsToShow();
-    updateVisibleItems(false);
-  });
-  updateVisibleItems();
-  window.addEventListener("resize", () => updateVisibleItems());
-});
-if (isMobile.any()) {
-  document.documentElement.setAttribute("data-fls-mobile", "");
+function updateMobileAttr() {
+  const html = document.documentElement;
+  html.toggleAttribute("data-fls-mobile", isMobile.any());
 }
+updateMobileAttr();
+window.addEventListener("resize", updateMobileAttr);
 addLoadedAttr();

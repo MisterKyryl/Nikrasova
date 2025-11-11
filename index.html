@@ -10,8 +10,8 @@
 		<link rel="preload" href="./assets/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1762548278746"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1762548278746">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1762894364376"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1762894364376">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -406,7 +406,7 @@
 					</div>
 				</div>
 				<section class="page__popular popular">
-					<div class="popular__container">
+					<div data-fls-showmore="2, [991.98, 3], [767.98, 4]" class="popular__container">
 						<h2 class="popular__title title">Найпопулярніші послуги</h2>
 						<div class="popular__text">
 							<p>
@@ -418,7 +418,7 @@
 								</span>
 							</p>
 						</div>
-						<div class="popular__body">
+						<div data-fls-showmore-body="" class="popular__body">
 							<div class="popular__item item-popular">
 								<a href="#" class="item-popular__image">
 									<img class="item-popular__picture" alt="Контурна пластика губ" src="./assets/img/home/popular/lip-contouring.webp">
@@ -572,9 +572,10 @@
 								<div class="item-popular__time">20-30хв</div>
 							</div>
 						</div>
-						<button type="button" class="popular__button button button--gray button--small">Показати більше</button>
+						<button data-fls-showmore-button="" type="button" class="popular__button button button--gray button--small">Показати більше</button>
 					</div>
 				</section>
+				<div class="page__results results"></div>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
