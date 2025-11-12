@@ -12,10 +12,8 @@
 		<link rel="preload" href="./assets/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./favicon.ico/favicon.ico">
 		<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png/apple-touch-icon.png">
-		<meta name="description" content="Сучасна клініка краси Nikrasova у Києві. Професійна косметологія, апаратні методики та індивідуальний підхід. Натуральний результат і турбота про вашу красу понад 10 років.">
-		<title>
-			Nikrasova Beauty Clinic — клініка краси у Києві | 10 років турботи про вашу впевненість
-		</title>
+		<meta name="description" content="Актуальні ціни на косметологічні послуги в Nikrasova Beauty Clinic. Прозора вартість процедур, сучасні технології та професійний догляд за вашою красою у центрі Києва.">
+		<title>Ціни на послуги — Nikrasova Beauty Clinic у Києві | Професійна косметологі</title>
 		<!-- Канонічне посилання -->
 		<!-- <link rel="canonical" href="https://nikrasova.com.ua/"> -->
 		<!-- Open Graph для соцмереж -->
@@ -35,10 +33,9 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 content="Сучасна клініка краси Nikrasova у Києві. Професійна косметологія, апаратні методики та індивідуальний підхід. Натуральний результат і турбота про вашу красу понад 10 років.">
 -->
 		<!-- <meta name="twitter:image" content="https://nikrasova.com.ua/images/og-main.jpg"> -->
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1762987256460"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/app.min.js">
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1762987256460">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1762987256460">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1762987256459"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1762987256459">
+		<link rel="stylesheet" crossorigin="" href="./css/price.min.css?v=1762987256459">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -46,7 +43,9 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 				<div class="header__container">
 					<div class="header__body">
 						<div class="header__logo">
-							<img src="./assets/img/logo.svg" alt="Logo">
+							<a href="index.html" class="header__link-logo">
+								<img src="./assets/img/logo.svg" alt="Logo">
+							</a>
 						</div>
 						<div class="header__menu menu">
 							<nav class="menu__body">
@@ -193,7 +192,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 											</details>
 										</li>
 										<li class="menu__item">
-											<a href="#" class="menu__link">Прайс</a>
+											<a href="#" class="menu__link menu__link--active">Прайс</a>
 										</li>
 										<li class="menu__item">
 											<a href="#" class="menu__link">Про нас</a>
@@ -223,91 +222,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 					</div>
 				</div>
 			</header>
-			<main class="page page--home">
-				<section class="page__hero hero">
-					<div class="hero__container">
-						<div class="hero__content">
-							<div class="hero__background">
-								<picture>
-									<source srcset="./assets/img/home/hero/mob-bg.webp" media="(max-width: 767.98px)">
-									<img class="hero__picture" alt="Команда клініки Nikrasova" src="./assets/img/home/hero/bg.webp">
-								</picture>
-							</div>
-							<div class="hero__body">
-								<div class="hero__item">
-									<div class="hero__block">
-										<div class="hero__icon">
-											<img src="./assets/img/home/hero/01.svg" alt="">
-										</div>
-										<h2 class="hero__title">Ліцензія МОЗ України</h2>
-									</div>
-									<div class="hero__text">
-										<p>Клініка офіційно працює відповідно до медичних стандартів та норм безпеки.</p>
-									</div>
-								</div>
-								<div class="hero__item">
-									<div class="hero__block">
-										<div class="hero__icon">
-											<img src="./assets/img/home/hero/02.svg" alt="">
-										</div>
-										<h2 class="hero__title">Кваліфіковані лікарі</h2>
-									</div>
-									<div class="hero__text">
-										<p>Усі процедури виконуються спеціалістами з медичною освітою та досвідом.</p>
-									</div>
-								</div>
-								<div class="hero__item">
-									<div class="hero__block">
-										<div class="hero__icon">
-											<img src="./assets/img/home/hero/03.svg" alt="">
-										</div>
-										<h2 class="hero__title">Сучасне обладнання</h2>
-									</div>
-									<div class="hero__text">
-										<p>Використовуємо апарати нового покоління та перевірені безпечні технології.</p>
-									</div>
-								</div>
-								<div class="hero__item">
-									<div class="hero__block">
-										<div class="hero__icon">
-											<img src="./assets/img/home/hero/04.svg" alt="">
-										</div>
-										<h2 class="hero__title">Індивідуальний підхід</h2>
-									</div>
-									<div class="hero__text">
-										<p>Від діагностики до індивідуального курсу лікування та процедур.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-				<section class="page__about about">
-					<div class="about__container">
-						<div class="about__body">
-							<h2 class="about__title title title--start title--pink">
-								<span>Nikrasova</span>
-								—
-								<br>
-								10 років турботи про вашу красу та впевненість
-							</h2>
-							<div class="about__text">
-								<p>
-									Ми створили клініку, де сучасні технології поєднуються з турботою про кожного пацієнта. Наш підхід простий: безпека, професійність
-						та природний результат, який підкреслює індивідуальність.
-								</p>
-							</div>
-						</div>
-						<div class="about__content">
-							<div class="about__image about__image-01">
-								<img class="about__picture about__picture-01" alt="" src="./assets/img/home/about/01.webp">
-							</div>
-							<div class="about__image about__image-02">
-								<img class="about__picture about__picture-02" alt="" src="./assets/img/home/about/02.webp">
-							</div>
-						</div>
-					</div>
-				</section>
+			<main class="page page--price">
 				<div data-fls-brands="" class="page__brands brands">
 					<div class="brands__container">
 						<div class="brands__title">Бренди з якими ми працюємо</div>
@@ -339,269 +254,6 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 						</div>
 					</div>
 				</div>
-				<div class="page__directions directions">
-					<div class="directions__container">
-						<h2 class="directions__title title">Наші напрямки</h2>
-						<div class="directions__body">
-							<div class="directions__item">
-								<div class="directions__content">
-									<h4 class="directions__sub-title">Косметологія</h4>
-								</div>
-								<div class="directions__image">
-									<img class="directions__picture" alt="" src="./assets/img/home/directions/01.webp">
-								</div>
-							</div>
-							<div class="directions__item">
-								<div class="directions__content">
-									<h4 class="directions__sub-title">Дерматологія</h4>
-								</div>
-								<div class="directions__image">
-									<img class="directions__picture" alt="" src="./assets/img/home/directions/02.webp">
-								</div>
-							</div>
-							<div class="directions__item">
-								<div class="directions__content">
-									<h4 class="directions__sub-title">Гінекологія</h4>
-								</div>
-								<div class="directions__image">
-									<img class="directions__picture" alt="" src="./assets/img/home/directions/03.webp">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div data-fls-team="" class="page__team team">
-					<div class="team__container">
-						<h2 class="team__title title">Наші лікарі</h2>
-						<div data-fls-slider="" class="team__slider slider-team swiper">
-							<div class="slider-team__wrapper swiper-wrapper">
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="" src="./assets/img/team/tamila-sergiivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Таміла Сергіївна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог,
-							досвід роботи 4 роки</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="" src="./assets/img/team/marina-vasylivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Марина Василівна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог
-							досвід роботи 10 років</div>
-									</div>
-								</div>
-								<div data-fls-slider-hero="" class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="" src="./assets/img/team/svitlana-olegivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Світлана Олегівна</div>
-										<div class="slider-team__info">Лікар-косметолог,
-							досвід роботи 10 років</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="" src="./assets/img/team/kateryna-volodymyrivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Катерина Володимирівна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог, косметолог
-							досвід роботи 3 роки</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="" src="./assets/img/team/marina-leonidovna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Марина Леонідівна</div>
-										<div class="slider-team__info">
-											Лікар-дерматолог, трихолог,
-							дитячий дерматолог,
-							досвід роботи 7 років
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<section class="page__popular popular">
-					<div data-fls-showmore="2, [991.98, 3], [767.98, 4]" class="popular__container">
-						<h2 class="popular__title title">Найпопулярніші послуги</h2>
-						<div class="popular__text">
-							<p>
-								Процедури, перевірені часом і підтверджені сотнями задоволених клієнтів.
-								<span>
-									Вони вирішують найпоширеніші запити і є справжніми
-						"хітами" в
-						сучасній косметології.
-								</span>
-							</p>
-						</div>
-						<div data-fls-showmore-body="" class="popular__body">
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Контурна пластика губ" src="./assets/img/home/popular/lip-contouring.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Контурна
-											<br>
-											пластика губ
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">30-45хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Лікування акне" src="./assets/img/home/popular/treatment.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Лікування
-											<br>
-											акне
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">20-30хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Доглядові процедури" src="./assets/img/home/popular/care-procedures.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Доглядові
-											<br>
-											процедури
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">60-120хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="RF ліфтинг" src="./assets/img/home/popular/rf-lifting.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											RF
-											<br>
-											ліфтинг
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">40-60хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Мезотерапія обличчя" src="./assets/img/home/popular/mesotherapy-face.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Мезотерапія
-											<br>
-											обличчя
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">30-45хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Лазерна епіляція" src="./assets/img/home/popular/laser-hair-removal.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Лазерна
-											<br>
-											епіляція
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">30-60хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="Пілінг Quick peel" src="./assets/img/home/popular/quick-peel.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											Пілінг
-											<br>
-											Quick peel
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">30-40хв</div>
-							</div>
-							<div class="popular__item item-popular">
-								<a href="#" class="item-popular__image">
-									<img class="item-popular__picture" alt="УЗД діагностика" src="./assets/img/home/popular/usd-diagnostics.webp">
-								</a>
-								<div class="item-popular__content">
-									<h4 class="item-popular__title">
-										<a href="#" class="item-popular__link-title">
-											УЗД
-											<br>
-											діагностика
-										</a>
-									</h4>
-									<div class="item-popular__actions">
-										<button data-fls-button="" type="button" class="item-popular__button button button--small">Записатись</button>
-										<button data-fls-button="" type="button" class="item-popular__button button button--gray button--small">Детальніше</button>
-									</div>
-								</div>
-								<div class="item-popular__time">20-30хв</div>
-							</div>
-						</div>
-						<button data-fls-showmore-button="" type="button" class="popular__button button button--gray button--small">Показати більше</button>
-					</div>
-				</section>
 				<div data-fls-results="" class="page__results results">
 					<div class="results__container">
 						<h2 class="results__title title">Наші результати</h2>
@@ -677,7 +329,9 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
 					<div class="footer__logo">
-						<img src="./assets/img/logo.svg" alt="Logo">
+						<a href="index.html" class="footer__link-logo">
+							<img src="./assets/img/logo.svg" alt="Logo">
+						</a>
 					</div>
 					<div class="footer__socials">
 						<div class="footer__social">
