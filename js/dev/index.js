@@ -856,6 +856,9 @@ function elementOuterSize(el, size, includeMargins) {
     return el[size === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-right" : "margin-top")) + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-left" : "margin-bottom"));
   }
 }
+function makeElementsArray(el) {
+  return (Array.isArray(el) ? el : [el]).filter((e) => !!e);
+}
 function getRotateFix(swiper) {
   return (v) => {
     if (Math.abs(v) > 0 && swiper.browser && swiper.browser.need3dFix && Math.abs(v) % 90 === 0) {
@@ -863,6 +866,15 @@ function getRotateFix(swiper) {
     }
     return v;
   };
+}
+function setInnerHTML(el, html = "") {
+  if (typeof trustedTypes !== "undefined") {
+    el.innerHTML = trustedTypes.createPolicy("html", {
+      createHTML: (s) => s
+    }).createHTML(html);
+  } else {
+    el.innerHTML = html;
+  }
 }
 let support;
 function calcSupport() {
@@ -4496,6 +4508,223 @@ Object.keys(prototypes).forEach((prototypeGroup) => {
   });
 });
 Swiper.use([Resize, Observer]);
+function createElementIfNotDefined(swiper, originalParams, params, checkProps) {
+  if (swiper.params.createElements) {
+    Object.keys(checkProps).forEach((key) => {
+      if (!params[key] && params.auto === true) {
+        let element = elementChildren(swiper.el, `.${checkProps[key]}`)[0];
+        if (!element) {
+          element = createElement("div", checkProps[key]);
+          element.className = checkProps[key];
+          swiper.el.append(element);
+        }
+        params[key] = element;
+        originalParams[key] = element;
+      }
+    });
+  }
+  return params;
+}
+const arrowSvg = `<svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"/></svg>`;
+function Navigation({
+  swiper,
+  extendParams,
+  on,
+  emit
+}) {
+  extendParams({
+    navigation: {
+      nextEl: null,
+      prevEl: null,
+      addIcons: true,
+      hideOnClick: false,
+      disabledClass: "swiper-button-disabled",
+      hiddenClass: "swiper-button-hidden",
+      lockClass: "swiper-button-lock",
+      navigationDisabledClass: "swiper-navigation-disabled"
+    }
+  });
+  swiper.navigation = {
+    nextEl: null,
+    prevEl: null,
+    arrowSvg
+  };
+  function getEl(el) {
+    let res;
+    if (el && typeof el === "string" && swiper.isElement) {
+      res = swiper.el.querySelector(el) || swiper.hostEl.querySelector(el);
+      if (res) return res;
+    }
+    if (el) {
+      if (typeof el === "string") res = [...document.querySelectorAll(el)];
+      if (swiper.params.uniqueNavElements && typeof el === "string" && res && res.length > 1 && swiper.el.querySelectorAll(el).length === 1) {
+        res = swiper.el.querySelector(el);
+      } else if (res && res.length === 1) {
+        res = res[0];
+      }
+    }
+    if (el && !res) return el;
+    return res;
+  }
+  function toggleEl(el, disabled) {
+    const params = swiper.params.navigation;
+    el = makeElementsArray(el);
+    el.forEach((subEl) => {
+      if (subEl) {
+        subEl.classList[disabled ? "add" : "remove"](...params.disabledClass.split(" "));
+        if (subEl.tagName === "BUTTON") subEl.disabled = disabled;
+        if (swiper.params.watchOverflow && swiper.enabled) {
+          subEl.classList[swiper.isLocked ? "add" : "remove"](params.lockClass);
+        }
+      }
+    });
+  }
+  function update2() {
+    const {
+      nextEl,
+      prevEl
+    } = swiper.navigation;
+    if (swiper.params.loop) {
+      toggleEl(prevEl, false);
+      toggleEl(nextEl, false);
+      return;
+    }
+    toggleEl(prevEl, swiper.isBeginning && !swiper.params.rewind);
+    toggleEl(nextEl, swiper.isEnd && !swiper.params.rewind);
+  }
+  function onPrevClick(e) {
+    e.preventDefault();
+    if (swiper.isBeginning && !swiper.params.loop && !swiper.params.rewind) return;
+    swiper.slidePrev();
+    emit("navigationPrev");
+  }
+  function onNextClick(e) {
+    e.preventDefault();
+    if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind) return;
+    swiper.slideNext();
+    emit("navigationNext");
+  }
+  function init() {
+    const params = swiper.params.navigation;
+    swiper.params.navigation = createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
+      nextEl: "swiper-button-next",
+      prevEl: "swiper-button-prev"
+    });
+    if (!(params.nextEl || params.prevEl)) return;
+    let nextEl = getEl(params.nextEl);
+    let prevEl = getEl(params.prevEl);
+    Object.assign(swiper.navigation, {
+      nextEl,
+      prevEl
+    });
+    nextEl = makeElementsArray(nextEl);
+    prevEl = makeElementsArray(prevEl);
+    const initButton = (el, dir) => {
+      if (el) {
+        if (params.addIcons && el.matches(".swiper-button-next,.swiper-button-prev") && !el.querySelector("svg")) {
+          const tempEl = document.createElement("div");
+          setInnerHTML(tempEl, arrowSvg);
+          el.appendChild(tempEl.querySelector("svg"));
+          tempEl.remove();
+        }
+        el.addEventListener("click", dir === "next" ? onNextClick : onPrevClick);
+      }
+      if (!swiper.enabled && el) {
+        el.classList.add(...params.lockClass.split(" "));
+      }
+    };
+    nextEl.forEach((el) => initButton(el, "next"));
+    prevEl.forEach((el) => initButton(el, "prev"));
+  }
+  function destroy() {
+    let {
+      nextEl,
+      prevEl
+    } = swiper.navigation;
+    nextEl = makeElementsArray(nextEl);
+    prevEl = makeElementsArray(prevEl);
+    const destroyButton = (el, dir) => {
+      el.removeEventListener("click", dir === "next" ? onNextClick : onPrevClick);
+      el.classList.remove(...swiper.params.navigation.disabledClass.split(" "));
+    };
+    nextEl.forEach((el) => destroyButton(el, "next"));
+    prevEl.forEach((el) => destroyButton(el, "prev"));
+  }
+  on("init", () => {
+    if (swiper.params.navigation.enabled === false) {
+      disable();
+    } else {
+      init();
+      update2();
+    }
+  });
+  on("toEdge fromEdge lock unlock", () => {
+    update2();
+  });
+  on("destroy", () => {
+    destroy();
+  });
+  on("enable disable", () => {
+    let {
+      nextEl,
+      prevEl
+    } = swiper.navigation;
+    nextEl = makeElementsArray(nextEl);
+    prevEl = makeElementsArray(prevEl);
+    if (swiper.enabled) {
+      update2();
+      return;
+    }
+    [...nextEl, ...prevEl].filter((el) => !!el).forEach((el) => el.classList.add(swiper.params.navigation.lockClass));
+  });
+  on("click", (_s, e) => {
+    let {
+      nextEl,
+      prevEl
+    } = swiper.navigation;
+    nextEl = makeElementsArray(nextEl);
+    prevEl = makeElementsArray(prevEl);
+    const targetEl = e.target;
+    let targetIsButton = prevEl.includes(targetEl) || nextEl.includes(targetEl);
+    if (swiper.isElement && !targetIsButton) {
+      const path = e.path || e.composedPath && e.composedPath();
+      if (path) {
+        targetIsButton = path.find((pathEl) => nextEl.includes(pathEl) || prevEl.includes(pathEl));
+      }
+    }
+    if (swiper.params.navigation.hideOnClick && !targetIsButton) {
+      if (swiper.pagination && swiper.params.pagination && swiper.params.pagination.clickable && (swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl))) return;
+      let isHidden;
+      if (nextEl.length) {
+        isHidden = nextEl[0].classList.contains(swiper.params.navigation.hiddenClass);
+      } else if (prevEl.length) {
+        isHidden = prevEl[0].classList.contains(swiper.params.navigation.hiddenClass);
+      }
+      if (isHidden === true) {
+        emit("navigationShow");
+      } else {
+        emit("navigationHide");
+      }
+      [...nextEl, ...prevEl].filter((el) => !!el).forEach((el) => el.classList.toggle(swiper.params.navigation.hiddenClass));
+    }
+  });
+  const enable = () => {
+    swiper.el.classList.remove(...swiper.params.navigation.navigationDisabledClass.split(" "));
+    init();
+    update2();
+  };
+  const disable = () => {
+    swiper.el.classList.add(...swiper.params.navigation.navigationDisabledClass.split(" "));
+    destroy();
+  };
+  Object.assign(swiper.navigation, {
+    enable,
+    disable,
+    update: update2,
+    init,
+    destroy
+  });
+}
 function effectInit(params) {
   const {
     effect,
@@ -4756,6 +4985,78 @@ function initSliders() {
       }
     });
   }
+  if (document.querySelector(".slider-results")) {
+    new Swiper(".slider-results", {
+      // <- Вказуємо склас потрібного слайдера
+      // Підключаємо модулі слайдера
+      // для конкретного випадку
+      modules: [Navigation, EffectCoverflow],
+      observer: true,
+      observeParents: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      //autoHeight: true,
+      speed: 1e3,
+      grabCursor: false,
+      allowTouchMove: false,
+      //touchRatio: 0,
+      //simulateTouch: false,
+      //loop: true,
+      preloadImages: true,
+      lazy: true,
+      effect: "coverflow",
+      coverflowEffect: {
+        rotate: 0,
+        // без разворота
+        stretch: 0,
+        // расстояние между слайдами
+        depth: 0,
+        // глубина перспективы
+        modifier: 1,
+        // интенсивность эффекта
+        scale: 0.75,
+        // уменьшение боковых карточек
+        slideShadows: false
+      },
+      /*
+      			// Ефекти
+      			effect: 'fade',
+      			autoplay: {
+      				delay: 3000,
+      				disableOnInteraction: false,
+      			},
+      
+      			// Пагінація
+      			pagination: {
+      				el: '.swiper-pagination',
+      				clickable: true,
+      			},
+      
+      			// Скроллбар
+      
+      			scrollbar: {
+      				el: '.swiper-scrollbar',
+      				draggable: true,
+      			},
+      			*/
+      // Кнопки "вліво/вправо"
+      navigation: {
+        prevEl: ".slider-results__button-prev",
+        nextEl: ".slider-results__button-next"
+      },
+      // Брейкпоінти
+      breakpoints: {
+        360: {
+          spaceBetween: 0
+        },
+        768: {
+          spaceBetween: 32
+        }
+      },
+      // Події
+      on: {}
+    });
+  }
 }
 function updateSideClasses(swiper) {
   const slides = swiper.slides;
@@ -4966,6 +5267,99 @@ class DynamicAdapt {
 if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => new DynamicAdapt());
 }
+class BeforeAfter {
+  constructor(props) {
+    let defaultConfig = {
+      init: true,
+      logging: true
+    };
+    this.config = Object.assign(defaultConfig, props);
+    if (this.config.init) {
+      const beforeAfterItems = document.querySelectorAll("[data-fls-beforeafter]");
+      if (beforeAfterItems.length > 0) {
+        this.setLogging(`Прокинувся, бачу елементів: ${beforeAfterItems.length}`);
+        this.beforeAfterInit(beforeAfterItems);
+      } else {
+        this.setLogging(`Прокинувся, не бачу елементів`);
+      }
+    }
+  }
+  beforeAfterInit(beforeAfterItems) {
+    beforeAfterItems.forEach((beforeAfter) => {
+      if (beforeAfter) {
+        this.beforeAfterClasses(beforeAfter);
+        this.beforeAfterItemInit(beforeAfter);
+      }
+    });
+  }
+  beforeAfterClasses(beforeAfter) {
+    beforeAfter.querySelector("[data-fls-beforeafter-arrow]");
+    beforeAfter.addEventListener("mouseover", function(e) {
+      const targetElement = e.target;
+      if (!targetElement.hasAttribute("data-fls-beforeafter-arrow")) {
+        if (targetElement.closest("[data-fls-beforeafter-before]")) {
+          beforeAfter.classList.remove("-right");
+          beforeAfter.classList.add("-left");
+        } else {
+          beforeAfter.classList.add("-right");
+          beforeAfter.classList.remove("-left");
+        }
+      }
+    });
+    beforeAfter.addEventListener("mouseleave", function() {
+      beforeAfter.classList.remove("-left");
+      beforeAfter.classList.remove("-right");
+    });
+  }
+  beforeAfterItemInit(beforeAfter) {
+    const beforeAfterArrow = beforeAfter.querySelector("[data-fls-beforeafter-arrow]");
+    const afterItem = beforeAfter.querySelector("[data-fls-beforeafter-after]");
+    const beforeAfterArrowWidth = parseFloat(window.getComputedStyle(beforeAfterArrow).getPropertyValue("width"));
+    let beforeAfterSizes = {};
+    if (beforeAfterArrow) {
+      isMobile.any() ? beforeAfterArrow.addEventListener("touchstart", beforeAfterDrag) : beforeAfterArrow.addEventListener("mousedown", beforeAfterDrag);
+    }
+    function beforeAfterDrag(e) {
+      beforeAfterSizes = {
+        width: beforeAfter.offsetWidth,
+        left: beforeAfter.getBoundingClientRect().left - scrollX
+      };
+      if (isMobile.any()) {
+        document.addEventListener("touchmove", beforeAfterArrowMove);
+        document.addEventListener("touchend", function(e2) {
+          document.removeEventListener("touchmove", beforeAfterArrowMove);
+        }, { "once": true });
+      } else {
+        document.addEventListener("mousemove", beforeAfterArrowMove);
+        document.addEventListener("mouseup", function(e2) {
+          document.removeEventListener("mousemove", beforeAfterArrowMove);
+        }, { "once": true });
+      }
+      document.addEventListener("dragstart", function(e2) {
+        e2.preventDefault();
+      }, { "once": true });
+    }
+    function beforeAfterArrowMove(e) {
+      const posLeft = e.type === "touchmove" ? e.touches[0].clientX - beforeAfterSizes.left : e.clientX - beforeAfterSizes.left;
+      if (posLeft <= beforeAfterSizes.width && posLeft > 0) {
+        const way = posLeft / beforeAfterSizes.width * 100;
+        beforeAfterArrow.style.cssText = `left:calc(${way}% - ${beforeAfterArrowWidth}px)`;
+        afterItem.style.cssText = `width: ${100 - way}%`;
+      } else if (posLeft >= beforeAfterSizes.width) {
+        beforeAfterArrow.style.cssText = `left: calc(100% - ${beforeAfterArrowWidth}px)`;
+        afterItem.style.cssText = `width: 0%`;
+      } else if (posLeft <= 0) {
+        beforeAfterArrow.style.cssText = `left: 0%`;
+        afterItem.style.cssText = `width: 100%`;
+      }
+    }
+  }
+  // Логінг у консоль
+  setLogging(message) {
+    if (this.config.logging) ;
+  }
+}
+new BeforeAfter({});
 const marquee = () => {
   const $marqueeArray = document.querySelectorAll("[data-fls-marquee]");
   const ATTR_NAMES = {
