@@ -5088,9 +5088,14 @@ document.addEventListener("DOMContentLoaded", () => {
     "scroll",
     () => html.toggleAttribute("data-fls-header-scroll-active", window.scrollY > 0)
   );
-  const observer = new MutationObserver(
-    () => html.toggleAttribute("data-fls-scrolllock", !!document.querySelector(".spollers-menu__title.--spoller-active"))
-  );
+  const observer = new MutationObserver(() => {
+    if (innerWidth >= 768) {
+      html.toggleAttribute(
+        "data-fls-scrolllock",
+        !!document.querySelector(".spollers-menu__title.--spoller-active")
+      );
+    }
+  });
   document.querySelectorAll(".spollers-menu__title").forEach(
     (el) => observer.observe(el, { attributes: true, attributeFilter: ["class"] })
   );
