@@ -1,5 +1,6 @@
 import "./app.min.js";
 /* empty css         */
+import "./brands.min.js";
 function showMore() {
   const showMoreBlocks = document.querySelectorAll("[data-fls-showmore]");
   showMoreBlocks.forEach((block) => {

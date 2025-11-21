@@ -1,5 +1,3 @@
-import "./app.min.js";
-/* empty css              */
 function syncHeadTables() {
   const mobile = window.innerWidth <= 1199.98;
   document.querySelectorAll(".tabs-hero-price__body").forEach((body) => {
