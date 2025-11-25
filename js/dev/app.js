@@ -360,7 +360,9 @@ function spollers() {
             spollerTitle.removeAttribute("tabindex");
             if (!spollerItem.hasAttribute("data-fls-spollers-open")) {
               spollerItem.open = false;
-              spollerTitle.nextElementSibling.hidden = true;
+              if (spollerTitle.nextElementSibling) {
+                spollerTitle.nextElementSibling.hidden = true;
+              }
             } else {
               spollerTitle.classList.add("--spoller-active");
               spollerItem.open = true;
@@ -369,7 +371,9 @@ function spollers() {
             spollerTitle.setAttribute("tabindex", "-1");
             spollerTitle.classList.remove("--spoller-active");
             spollerItem.open = true;
-            spollerTitle.nextElementSibling.hidden = false;
+            if (spollerTitle.nextElementSibling) {
+              spollerTitle.nextElementSibling.hidden = false;
+            }
           }
         });
       }
