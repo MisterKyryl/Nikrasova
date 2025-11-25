@@ -99,6 +99,10 @@
 .hero-price__scroll {
   flex: 1 1 auto;
 }
+.hero-price__button {
+  display: none;
+}
+
 .tabs-hero-price__navigation {
   display: flex;
   gap: 1.1875rem;
@@ -149,6 +153,9 @@
   }
   .hero-price__scroll::-webkit-scrollbar {
     display: none;
+  }
+  .hero-price__button {
+    display: inline-flex;
   }
 }
 @media (max-width: 22.5em){

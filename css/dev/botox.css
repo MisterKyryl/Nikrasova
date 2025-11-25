@@ -25,6 +25,7 @@
   display: grid;
 }
 .bottom-services__item {
+  text-wrap: balance;
   border-radius: 1.5625rem;
   background-color: #f5f4f4;
 }
@@ -37,9 +38,6 @@
   font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.01em;
-}
-.bottom-services__item--pink .bottom-services__title:not(:last-child) {
-  margin-bottom: 1.25rem;
 }
 .bottom-services__list {
   line-height: 1.2;
@@ -182,6 +180,9 @@
   .bottom-services__title {
     font-size: 1.25rem;
   }
+  .bottom-services__item--pink .bottom-services__title:not(:last-child) {
+    margin-bottom: 1rem;
+  }
   .bottom-services__list {
     font-size: 1.25rem;
   }
@@ -231,6 +232,9 @@
   }
   .bottom-services__title {
     font-size: clamp( 1.25rem , 1.04766187050625rem  +  0.8992805755vw , 1.875rem );
+  }
+  .bottom-services__item--pink .bottom-services__title:not(:last-child) {
+    margin-bottom: clamp( 1rem , 0.9190647482rem  +  0.3597122302vw , 1.25rem );
   }
   .bottom-services__list {
     font-size: clamp( 1.25rem , 1.1690647482rem  +  0.3597122302vw , 1.5rem );
@@ -331,6 +335,9 @@
   }
   .bottom-services__title {
     font-size: 1.875rem;
+  }
+  .bottom-services__item--pink .bottom-services__title:not(:last-child) {
+    margin-bottom: 1.25rem;
   }
   .bottom-services__list {
     font-size: 1.5rem;

@@ -387,6 +387,7 @@ body {
   padding-inline: 8.75rem;
 }
 .slider-results__button-prev, .slider-results__button-next {
+  z-index: 1;
   position: absolute;
   display: inline-flex;
   justify-content: center;
