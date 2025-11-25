@@ -43,6 +43,7 @@ function showMore() {
       return Math.max(1, Math.floor(parentWidth / itemWidth));
     }
     function updateVisibleItems(reset = true) {
+      if (!body || !button) return;
       itemsPerRow = getItemsPerRow();
       const rowsToShow = getRowsToShow();
       if (rowsToShow === 0) {
