@@ -461,7 +461,9 @@ function spollers() {
 window.addEventListener("load", spollers);
 function updateMobileAttr() {
   const html = document.documentElement;
-  html.toggleAttribute("data-fls-mobile", isMobile.any());
+  if (isMobile && typeof isMobile.any === "function") {
+    html.toggleAttribute("data-fls-mobile", isMobile.any());
+  }
 }
 updateMobileAttr();
 window.addEventListener("resize", updateMobileAttr);
