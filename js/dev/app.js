@@ -459,6 +459,12 @@ function spollers() {
   }
 }
 window.addEventListener("load", spollers);
+function updateMobileAttr() {
+  const html = document.documentElement;
+  html.toggleAttribute("data-fls-mobile", isMobile.any());
+}
+updateMobileAttr();
+window.addEventListener("resize", updateMobileAttr);
 function menuInit() {
   document.addEventListener("click", function(e) {
     if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
@@ -605,12 +611,6 @@ class DynamicAdapt {
 if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => new DynamicAdapt());
 }
-function updateMobileAttr() {
-  const html = document.documentElement;
-  html.toggleAttribute("data-fls-mobile", isMobile.any());
-}
-updateMobileAttr();
-window.addEventListener("resize", updateMobileAttr);
 addLoadedAttr();
 export {
   isMobile as i
