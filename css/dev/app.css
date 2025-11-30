@@ -93,8 +93,8 @@ body {
 [data-fls-scrolllock] body {
   padding-right: 0.9375rem;
 }
-[data-fls-mobile][data-fls-scrolllock] header,
-[data-fls-mobile][data-fls-scrolllock] body {
+[data-fls-scrolllock][data-fls-mobile] header,
+[data-fls-scrolllock][data-fls-mobile] body {
   padding-right: 0;
 }
 
