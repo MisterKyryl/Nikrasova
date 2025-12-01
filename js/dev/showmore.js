@@ -60,13 +60,21 @@ function showMore() {
     const isShowAllMode = block.hasAttribute("data-fls-showmore-all");
     if (isShowAllMode) {
       let expanded = false;
-      const originalUpdate = updateVisibleItems;
-      updateVisibleItems = function(reset = true) {
-        originalUpdate(reset);
-        button.style.display = "";
+      const toggleButtonText = () => {
+        const drop = button.querySelector(".showmore__button-drop");
+        const rollup = button.querySelector(".showmore__button-rollup");
+        if (drop && rollup) {
+          if (expanded) {
+            drop.style.display = "none";
+            rollup.style.display = "inline";
+          } else {
+            drop.style.display = "inline";
+            rollup.style.display = "none";
+          }
+        }
       };
-      updateVisibleItems(true);
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
         expanded = !expanded;
         button.classList.toggle("_showmore-active", expanded);
         if (expanded) {
@@ -74,11 +82,17 @@ function showMore() {
         } else {
           updateVisibleItems(true);
         }
+        toggleButtonText();
       });
       window.addEventListener("resize", () => {
-        if (expanded) items.forEach((item) => item.style.display = "");
-        else updateVisibleItems(true);
+        if (expanded) {
+          items.forEach((item) => item.style.display = "");
+        } else {
+          updateVisibleItems(true);
+        }
       });
+      updateVisibleItems(true);
+      toggleButtonText();
       return;
     }
     button.addEventListener("click", () => {
