@@ -52,17 +52,19 @@ function handleHeroPriceAlone() {
 }
 ["DOMContentLoaded", "resize"].forEach((e) => window.addEventListener(e, handleHeroPriceAlone));
 function initScrollHint() {
-  document.querySelectorAll("[data-fls-scrollhint]").forEach((el) => {
+  document.querySelectorAll("[data-fls-scrollhint]").forEach((wrapper) => {
+    const body = wrapper.querySelector("[data-fls-scrollhint-body]");
+    if (!body) return;
     const update = () => {
-      const vertical = el.scrollHeight > el.clientHeight;
-      const pos = vertical ? el.scrollTop : el.scrollLeft;
-      const max = vertical ? el.scrollHeight - el.clientHeight : el.scrollWidth - el.clientWidth;
-      el.classList.toggle("scroll-visible-start", pos > 1);
-      el.classList.toggle("scroll-visible-end", pos < max - 1);
+      const vertical = body.scrollHeight > body.clientHeight;
+      const pos = vertical ? body.scrollTop : body.scrollLeft;
+      const max = vertical ? body.scrollHeight - body.clientHeight : body.scrollWidth - body.clientWidth;
+      wrapper.classList.toggle("scroll-visible-start", pos > 1);
+      wrapper.classList.toggle("scroll-visible-end", pos < max - 1);
     };
-    el.addEventListener("scroll", update);
+    body.addEventListener("scroll", update);
     update();
   });
 }
 initScrollHint();
-["resize"].forEach((evt) => window.addEventListener(evt, initScrollHint));
+window.addEventListener("resize", initScrollHint);
