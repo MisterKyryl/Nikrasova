@@ -23,6 +23,12 @@ function updateHeadTableItemHidden() {
   (evt) => window.addEventListener(evt, updateHeadTableItemHidden)
 );
 function updateHeaderHeight() {
+  if (window.innerWidth < 1200) {
+    document.querySelectorAll(".hero-price__sub-title").forEach((sub) => {
+      sub.style.marginTop = "";
+    });
+    return;
+  }
   document.querySelectorAll(".hero-price__item").forEach((item) => {
     const head = item.querySelector(".head-table__item");
     const subtitle = item.querySelector(".hero-price__sub-title");
@@ -41,6 +47,10 @@ function handleHeroPriceAlone() {
   document.querySelectorAll(".hero-price__item").forEach((item) => {
     const row = item.querySelector(".body-table__item");
     const sub = item.querySelector(".hero-price__sub-title");
+    if (row && row.classList.contains("body-table__item--alone")) {
+      item.classList.remove("hero-price__item--alone");
+      return;
+    }
     if (!sub || !row || item.querySelectorAll(".body-table__item").length !== 1) {
       item.classList.remove("hero-price__item--alone");
       return;
