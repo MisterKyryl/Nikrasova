@@ -105,12 +105,16 @@
 .hero-price__scrollhint {
   flex: 1 1 auto;
 }
+.hero-price__table {
+  padding-inline: 1rem;
+}
 .hero-price__button {
   display: none;
 }
 
 .tabs-hero-price__navigation {
   display: inline-flex;
+  padding-inline: 1rem;
 }
 .page--services .tabs-hero-price__navigation {
   display: none;
@@ -162,7 +166,6 @@
     overflow-y: hidden;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-inline: 1rem;
   }
   [data-fls-scrollhint-body]::-webkit-scrollbar {
     display: none;
@@ -175,11 +178,6 @@
   }
   .hero-price__text {
     text-align: center;
-  }
-}
-@media (max-width: 61.99875em){
-  .tabs-hero-price__navigation {
-    padding-right: 1rem;
   }
 }
 @media (max-width: 47.99875em) and (min-width: 47.99875em){

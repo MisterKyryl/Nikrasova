@@ -260,7 +260,6 @@ body {
 
 .spollers-menu {
   position: relative;
-  justify-items: center;
 }
 .spollers-menu__title {
   display: flex;
@@ -633,6 +632,7 @@ body {
   }
   .spollers-menu {
     width: 100%;
+    text-align: center;
   }
   .spollers-menu__title {
     font-weight: 400;
