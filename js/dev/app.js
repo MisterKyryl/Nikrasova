@@ -459,16 +459,6 @@ function spollers() {
   }
 }
 window.addEventListener("load", spollers);
-if (!window.__FLS_MENU_INIT) {
-  window.__FLS_MENU_INIT = true;
-  document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-fls-menu]")) {
-      e.preventDefault();
-      bodyLockToggle();
-      document.documentElement.toggleAttribute("data-fls-menu-open");
-    }
-  });
-}
 function updateMobileAttr() {
   const html = document.documentElement;
   if (isMobile && typeof isMobile.any === "function") {
@@ -477,6 +467,15 @@ function updateMobileAttr() {
 }
 updateMobileAttr();
 window.addEventListener("resize", updateMobileAttr);
+function menuInit() {
+  document.addEventListener("click", function(e) {
+    if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
+      bodyLockToggle();
+      document.documentElement.toggleAttribute("data-fls-menu-open");
+    }
+  });
+}
+document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
   const observer = new MutationObserver(() => {

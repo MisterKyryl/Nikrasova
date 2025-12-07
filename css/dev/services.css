@@ -17,6 +17,9 @@
   text-wrap: balance;
   line-height: 1.2;
 }
+.top-services__text p b {
+  font-weight: 500;
+}
 .top-services__image {
   aspect-ratio: 696/545;
 }
