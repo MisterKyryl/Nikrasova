@@ -4702,6 +4702,19 @@ class BeforeAfter {
         afterItem.style.cssText = `width: 100%`;
       }
     }
+    beforeAfter.addEventListener(isMobile.any() ? "touchstart" : "mousedown", function(e) {
+      if (e.target === beforeAfterArrow) return;
+      const clientX = isMobile.any() ? e.touches[0].clientX : e.clientX;
+      const rectLeft = beforeAfter.getBoundingClientRect().left - scrollX;
+      const width = beforeAfter.offsetWidth;
+      let posLeft = clientX - rectLeft;
+      if (posLeft < 0) posLeft = 0;
+      if (posLeft > width) posLeft = width;
+      const way = posLeft / width * 100;
+      beforeAfterArrow.style.cssText = `left: calc(${way}% - ${beforeAfterArrowWidth}px)`;
+      afterItem.style.cssText = `width: ${100 - way}%`;
+      beforeAfterDrag();
+    });
   }
   // Логінг у консоль
   setLogging(message) {

@@ -459,15 +459,9 @@ function spollers() {
   }
 }
 window.addEventListener("load", spollers);
-function updateMobileAttr() {
-  const html = document.documentElement;
-  if (isMobile && typeof isMobile.any === "function") {
-    html.toggleAttribute("data-fls-mobile", isMobile.any());
-  }
-}
-updateMobileAttr();
-window.addEventListener("resize", updateMobileAttr);
-function menuInit() {
+function menuInitUnique() {
+  if (window.__MENU_INIT_DONE__) return;
+  window.__MENU_INIT_DONE__ = true;
   document.addEventListener("click", function(e) {
     if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
       bodyLockToggle();
@@ -475,7 +469,9 @@ function menuInit() {
     }
   });
 }
-document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
+if (document.querySelector("[data-fls-menu]")) {
+  window.addEventListener("load", menuInitUnique);
+}
 document.addEventListener("DOMContentLoaded", () => {
   const html = document.documentElement;
   const observer = new MutationObserver(() => {
@@ -642,6 +638,14 @@ if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => new DynamicAdapt());
 }
 addLoadedAttr();
+function updateMobileAttr() {
+  const html = document.documentElement;
+  if (isMobile && typeof isMobile.any === "function") {
+    html.toggleAttribute("data-fls-mobile", isMobile.any());
+  }
+}
+updateMobileAttr();
+window.addEventListener("resize", updateMobileAttr);
 export {
   isMobile as i
 };

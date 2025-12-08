@@ -47,6 +47,10 @@ function handleHeroPriceAlone() {
   document.querySelectorAll(".hero-price__item").forEach((item) => {
     const row = item.querySelector(".body-table__item");
     const sub = item.querySelector(".hero-price__sub-title");
+    if (item.classList.contains("hero-price__item--center")) {
+      item.classList.remove("hero-price__item--alone");
+      return;
+    }
     if (row && row.classList.contains("body-table__item--alone")) {
       item.classList.remove("hero-price__item--alone");
       return;

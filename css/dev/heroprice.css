@@ -89,6 +89,12 @@
 .hero-price__item--alone {
   border-bottom: 0.0625rem solid #b7b7b7;
 }
+.hero-price__item--center {
+  justify-content: center;
+}
+.hero-price__item--center .hero-price__content {
+  display: none;
+}
 .hero-price__sub-title {
   font-family: "Unbounded", sans-serif;
   font-weight: 400;
@@ -309,6 +315,9 @@
   }
   .tabs-hero-price__body .hero-price__scrollhint {
     width: 62%;
+  }
+  .hero-price__item--center .hero-price__scrollhint {
+    flex: 0 1 48.75rem;
   }
 }
 @media (min-width: 92em){

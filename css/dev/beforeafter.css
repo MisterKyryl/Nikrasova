@@ -91,11 +91,17 @@
   background-color: #ebebeb;
 }
 
+.before-after__item {
+  transition: width 0.1s;
+}
 .before-after__item--dn {
   display: none;
   visibility: hidden;
 }
 
+.before-after__arrow {
+  transition: all 0.4s, left 0.1s;
+}
 .before-after__arrow--dn {
   display: none;
   visibility: hidden;
@@ -108,7 +114,6 @@
   position: absolute;
   top: 50%;
   background-color: #282828;
-  transition: all 0.4s;
   border-radius: 0.125rem;
   aspect-ratio: 18/2;
 }
