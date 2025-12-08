@@ -89,6 +89,10 @@ body {
   touch-action: none;
   overscroll-behavior: none;
 }
+[data-fls-scrolllock] header,
+[data-fls-scrolllock] body {
+  padding-right: var(--scrollbar-width);
+}
 
 .wrapper {
   position: relative;
@@ -895,14 +899,6 @@ body {
     font-size: clamp( 1rem , 0.727272727275rem  +  0.5681818182vw , 1.25rem );
   }
 }@media (min-width: 61.99875em){
-  [data-fls-scrolllock] header,
-  [data-fls-scrolllock] body {
-    padding-right: 0.9375rem;
-  }
-  [data-fls-scrolllock][data-fls-mobile] header,
-  [data-fls-scrolllock][data-fls-mobile] body {
-    padding-right: 0;
-  }
   .spollers-menu__title::before {
     left: 0;
     right: auto;

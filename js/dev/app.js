@@ -185,6 +185,13 @@ function dataMediaQueries(array, dataSetValue) {
     return { itemsArray, matchMedia };
   });
 }
+function setScrollbarWidth() {
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.documentElement.style.setProperty(
+    "--scrollbar-width",
+    scrollbarWidth + "px"
+  );
+}
 function tabs() {
   const tabs2 = document.querySelectorAll("[data-fls-tabs]");
   let tabsActiveHash = [];
@@ -638,6 +645,8 @@ if (document.querySelector("[data-fls-dynamic]")) {
   window.addEventListener("load", () => new DynamicAdapt());
 }
 addLoadedAttr();
+setScrollbarWidth();
+window.addEventListener("resize", setScrollbarWidth);
 function updateMobileAttr() {
   const html = document.documentElement;
   if (isMobile && typeof isMobile.any === "function") {
