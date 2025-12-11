@@ -12,8 +12,8 @@
 		<link rel="preload" href="./assets/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
-		<meta name="description" content="У Nikrasova Beauty Clinic сучасні технології та професійна команда допомагають розкрити природну красу. Індивідуальний підхід та гармонійний результат в основі кожної процедури.">
-		<title>Про нас — Nikrasova Beauty Clinic у Києві</title>
+		<meta name="description" content="Консультація трихолога для діагностики випадіння волосся, стану шкіри голови та підбору ефективного лікування. Професійний підхід у Nikrasova Beauty Clinic, Київ.">
+		<title>Консультація лікаря-трихолога у Києві — Nikrasova Beauty Clinic</title>
 		<!-- Канонічне посилання -->
 		<!-- <link rel="canonical" href="https://nikrasova.com.ua/"> -->
 		<!-- Open Graph для соцмереж -->
@@ -33,16 +33,18 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 content="Сучасна клініка краси Nikrasova у Києві. Професійна косметологія, апаратні методики та індивідуальний підхід. Натуральний результат і турбота про вашу красу понад 10 років.">
 -->
 		<!-- <meta name="twitter:image" content="https://nikrasova.com.ua/images/og-main.jpg"> -->
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1765425908407"></script>
-		<script type="module" crossorigin="" src="./js/beforeafter.min.js?v=1765425908407"></script>
-		<script type="module" crossorigin="" src="./js/brands.min.js?v=1765425908407"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/beforeafter.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/brands.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/about.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/team.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/results.min.css?v=1765425908407">
-		<link rel="stylesheet" crossorigin="" href="./css/recording.min.css?v=1765425908407">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1765425908405"></script>
+		<script type="module" crossorigin="" src="./js/beforeafter.min.js?v=1765425908405"></script>
+		<script type="module" crossorigin="" src="./js/showmore.min.js?v=1765425908405"></script>
+		<script type="module" crossorigin="" src="./js/heroprice.min.js?v=1765425908405"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/beforeafter.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/showmore.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/heroprice.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/trichology-consultation.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/services.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/results.min.css?v=1765425908405">
+		<link rel="stylesheet" crossorigin="" href="./css/recording.min.css?v=1765425908405">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -170,7 +172,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 																		<a href="dermatology-cosmetology-consultation.html" class="dropdown__link">Консультація дерматолога-косметолога</a>
 																	</li>
 																	<li class="dropdown__item">
-																		<a href="trichology-consultation.html" class="dropdown__link">Консультація трихолога</a>
+																		<a href="trichology-consultation.html" class="dropdown__link dropdown__link--active">Консультація трихолога</a>
 																	</li>
 																	<li class="dropdown__item">
 																		<a href="gynecologist-consultation.html" class="dropdown__link">Консультація гінеколога</a>
@@ -182,7 +184,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 															<div data-fls-tabs="" class="dropdown__tabs tabs">
 																<nav data-fls-tabs-titles="" class="dropdown__navigation tabs__navigation">
 																	<!-- Косметологія -->
-																	<button type="button" class="dropdown__title dropdown__title--cosmetology tabs__title --tab-active"></button>
+																	<button type="button" class="dropdown__title dropdown__title--cosmetology tabs__title"></button>
 																	<!-- Косметологія -->
 																	<!-- Дерматологія -->
 																	<button type="button" class="dropdown__title dropdown__title--dermatology tabs__title"></button>
@@ -191,7 +193,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 																	<button type="button" class="dropdown__title dropdown__title--gynecology tabs__title"></button>
 																	<!-- Гінекологія -->
 																	<!-- Консультації лікарів -->
-																	<button type="button" class="dropdown__title dropdown__title--consulting tabs__title"></button>
+																	<button type="button" class="dropdown__title dropdown__title--consulting tabs__title --tab-active"></button>
 																	<!-- Консультації лікарів -->
 																</nav>
 																<div data-fls-tabs-body="" class="dropdown__content tabs__content">
@@ -210,7 +212,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 											<a href="price.html" class="menu__link">Прайс</a>
 										</li>
 										<li class="menu__item">
-											<a href="about.html" class="menu__link menu__link--active">Про нас</a>
+											<a href="about.html" class="menu__link">Про нас</a>
 										</li>
 										<li class="menu__item">
 											<a href="#" class="menu__link">Контакти</a>
@@ -237,137 +239,229 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 					</div>
 				</div>
 			</header>
-			<main class="page page--about">
-				<section class="page__hero-about hero-about">
-					<div class="hero-about__container">
-						<h1 class="hero-about__title title title--fw-400">Про нас</h1>
-						<div class="hero-about__content">
-							<div class="hero-about__body">
-								<h2 class="hero-about__name title title--start title--pink">Світлана Нікрасова</h2>
-								<div class="hero-about__sub-title">Засновниця клініки, лікар-косметолог</div>
-								<div class="hero-about__text">
-									<p>Вітаю!</p>
+			<main class="page page--services">
+				<section data-fls-services="" class="page__services services">
+					<div class="services__container">
+						<div class="services__top top-services">
+							<div class="top-services__body">
+								<h1 class="top-services__title title title--start">
+									<span class="title--fw-400">Консультація лікаря-трихолога</span>
+								</h1>
+								<div class="top-services__text">
 									<p>
-										Косметологія - це не просто моя професія, а справжня пристрасть, яка веде мене вперед з 2015 року. Я створила простір, де
-							інновації
-							гармонійно поєднуються з індивідуальним підходом, допомагаючи кожному розкрити свою природну
-							красу.
+										Фахівець з діагностики та лікування волосся допоможе зупинити випадіння, покращити стан шкіри голови та повернути волоссю силу й густоту.
 									</p>
-									<br>
 									<p>
-										Найбільша моя гордість — наша клініка. Тут працюють не просто фахівці, а команда
-							професіоналів естетичної медицини, які не просто виконують процедури, а творять справжнє мистецтво краси. Ми бачимо красу
-							по-новому
-							- природну, гармонійну, витончену.
+										Красиве волосся починається зі здорової шкіри голови. Лікар-трихолог - це спеціаліст, який займається виявленням і лікуванням проблем випадіння волосся, лупи, підвищеної жирності чи сухості, а також підбором правильного догляду.
 									</p>
-									<br>
 									<p>
-										Я постійно вдосконалюю свої знання, навчаючись у найкращих фахівців світу, а наша команда щороку підвищує кваліфікацію на
-							провідних
-							європейських навчальних програмах.
-									</p>
-									<br>
-									<p class="hero-about__text--fs">
-										Тут народжується ваша ідеальна версія - без перебільшень, без шаблонів, лише справжні Ви.
+										На консультації лікар проводить огляд, при необхідності - трихоскопію (діагностику волосся та шкіри голови під збільшенням), визначає причину проблем і складає індивідуальний план лікування.
 									</p>
 								</div>
 							</div>
-							<div class="hero-about__image">
-								<img alt="Світлана Нікрасова — засновниця клініки, лікар-косметолог" src="./assets/img/about/hero-about/01.webp">
+							<div class="top-services__image">
+								<img alt="" src="./assets/img/services/trichology-consultation/01.webp">
+							</div>
+						</div>
+						<div class="services__bottom bottom-services">
+							<div class="bottom-services__item bottom-services__item--big">
+								<h3 class="bottom-services__title">Що включає консультація:</h3>
+								<ul class="bottom-services__list bottom-services__list--checked">
+									<li>
+										<span class="display--grid">
+											<span>
+												<b>Візуальний огляд</b>
+											</span>
+											<span>Візуально оглядає шкіру голови, збирає анамнез та формує список скарг пацієнта</span>
+										</span>
+									</li>
+									<li>
+										<span class="display--grid">
+											<span>
+												<b>Апартна діагностика</b>
+											</span>
+											<span>
+												Проводить апаратну діагностику, яка дозволяє точно визначити стан волосся та підібрати індивідуальну програму лікування
+											</span>
+										</span>
+									</li>
+									<li>
+										<span class="display--grid">
+											<span>
+												<b>Призначення аналізів</b>
+											</span>
+											<span>За необхідності лікар призначає лабораторні аналізи</span>
+										</span>
+									</li>
+									<li>
+										<span class="display--grid">
+											<span>
+												<b>Попередній діагноз</b>
+											</span>
+											<span>
+												Лікар виставляє попередній діагноз на основі скарг, даних обстеження та історії хвороби
+											</span>
+										</span>
+									</li>
+									<li>
+										<span class="display--grid">
+											<span>
+												<b>План лікування</b>
+											</span>
+											<span>
+												Лікар-трихолог складає план лікування, який враховує особливості саме вашого організму
+											</span>
+										</span>
+									</li>
+								</ul>
+							</div>
+							<div class="bottom-services__item">
+								<h3 class="bottom-services__title">З якими проблемами допомагає трихолог</h3>
+								<ul class="bottom-services__list bottom-services__list--checked">
+									<li>Випадіння та стоншення волосся</li>
+									<li>Ламкість і сухість</li>
+									<li>Себорея, лупа, надмірна жирність шкіри голови</li>
+									<li>Уповільнений ріст волосся</li>
+									<li>Лікування псоріазу</li>
+								</ul>
+							</div>
+							<div class="bottom-services__item">
+								<h3 class="bottom-services__title">Переваги консультації</h3>
+								<ul class="bottom-services__list bottom-services__list--diamond">
+									<li>Комплексна діагностика та професійний підхід</li>
+									<li>Індивідуальні схеми лікування та догляду</li>
+									<li>Можливість поєднання з косметологічними процедурами для кращого ефекту</li>
+									<li>Сучасне обладнання для точної діагностики</li>
+									<li>Підтримка та супровід пацієнта на всіх етапах лікування</li>
+								</ul>
 							</div>
 						</div>
 					</div>
 				</section>
-				<div data-fls-team="" class="page__team team">
-					<div class="team__container">
-						<h2 class="team__title title">Наші лікарі</h2>
-						<div data-fls-slider="" class="team__slider slider-team swiper">
-							<div class="slider-team__wrapper swiper-wrapper">
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="Таміла Сергіївна — лікар-дерматолог, трихолог" src="./assets/img/team/tamila-sergiivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Таміла Сергіївна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог,
-							досвід роботи 4 роки</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="Марина Василівна — лікар-дерматолог, трихолог" src="./assets/img/team/marina-vasylivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Марина Василівна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог,
-							досвід роботи 10 років</div>
-									</div>
-								</div>
-								<div data-fls-slider-hero="" class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="Світлана Олегівна — лікар-косметолог" src="./assets/img/team/svitlana-olegivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Світлана Олегівна</div>
-										<div class="slider-team__info">Лікар-косметолог,
-							досвід роботи 10 років</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="Катерина Володимирівна — лікар-дерматолог, трихолог, косметолог" src="./assets/img/team/kateryna-volodymyrivna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Катерина Володимирівна</div>
-										<div class="slider-team__info">Лікар-дерматолог, трихолог, косметолог
-							досвід роботи 3 роки</div>
-									</div>
-								</div>
-								<div class="slider-team__slide swiper-slide">
-									<div class="slider-team__image">
-										<img class="slider-team__picture" alt="Марина Леонідівна — лікар-дерматолог, трихолог, дитячий дерматолог" src="./assets/img/team/marina-leonidovna.webp">
-									</div>
-									<div class="slider-team__content">
-										<div class="slider-team__name">Марина Леонідівна</div>
-										<div class="slider-team__info">
-											Лікар-дерматолог, трихолог,
-							дитячий дерматолог,
-							досвід роботи 7 років
+				<div data-fls-heroprice="" class="page__hero-price hero-price">
+					<div class="hero-price__container">
+						<h2 class="hero-price__title title title--fw-400">Ціни</h2>
+						<div class="hero-price__tabs tabs-hero-price">
+							<div class="tabs-hero-price__content">
+								<!-- Трихологія -->
+								<div class="tabs-hero-price__body">
+									<!-- Лікар-трихолог -->
+									<div data-fls-showmore="[767.98, 5]" data-fls-showmore-all="" class="hero-price__item">
+										<div class="hero-price__content">
+											<h3 class="hero-price__sub-title">Лікар-трихолог</h3>
 										</div>
+										<div data-fls-scrollhint="" class="hero-price__scrollhint">
+											<div data-fls-scrollhint-body="" class="hero-price__scroll scroll-visible-end">
+												<table data-fls-table="" class="hero-price__table table table--ct">
+													<thead class="table__head head-table">
+														<tr class="head-table__item">
+															<th></th>
+															<th></th>
+														</tr>
+													</thead>
+													<tbody data-fls-showmore-body="" class="table__body body-table">
+														<tr class="body-table__item">
+															<td>
+																<span>Консультація лікаря трихолога</span>
+															</td>
+															<td>
+																<span>1 200 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Повторна консультація лікаря трихолога (протягом 30 днів)</span>
+															</td>
+															<td>
+																<span>700 ₴</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<button data-fls-showmore-button="" type="button" class="hero-price__button button button--gray button--small">
+											<span class="showmore__button-drop">Показати більше</span>
+											<span class="showmore__button-rollup">Сховати</span>
+										</button>
 									</div>
+									<!-- Лікар-трихолог -->
+									<!-- Мезотерапія голови -->
+									<div data-fls-showmore="[767.98, 5]" data-fls-showmore-all="" class="hero-price__item">
+										<div class="hero-price__content">
+											<h3 class="hero-price__sub-title">Мезотерапія голови</h3>
+										</div>
+										<div data-fls-scrollhint="" class="hero-price__scrollhint">
+											<div data-fls-scrollhint-body="" class="hero-price__scroll scroll-visible-end">
+												<table data-fls-table="" class="hero-price__table table table--ct">
+													<thead class="table__head head-table">
+														<tr class="head-table__item">
+															<th></th>
+															<th></th>
+														</tr>
+													</thead>
+													<tbody data-fls-showmore-body="" class="table__body body-table">
+														<tr class="body-table__item">
+															<td>
+																<span>Dermaheal</span>
+															</td>
+															<td>
+																<span>1 900 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Hair loss control</span>
+															</td>
+															<td>
+																<span>2 000 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Good hair</span>
+															</td>
+															<td>
+																<span>2 200 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Dutabiot</span>
+															</td>
+															<td>
+																<span>4 000 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Dr.cyj hair filler</span>
+															</td>
+															<td>
+																<span>4 800 ₴</span>
+															</td>
+														</tr>
+														<tr class="body-table__item">
+															<td>
+																<span>Plinest hair</span>
+															</td>
+															<td>
+																<span>5 000 ₴</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<button data-fls-showmore-button="" type="button" class="hero-price__button button button--gray button--small">
+											<span class="showmore__button-drop">Показати більше</span>
+											<span class="showmore__button-rollup">Сховати</span>
+										</button>
+									</div>
+									<!-- Мезотерапія голови -->
 								</div>
+								<!-- Трихологія -->
 							</div>
-						</div>
-					</div>
-				</div>
-				<div data-fls-brands="" class="page__brands brands">
-					<div class="brands__container">
-						<div class="brands__title">Бренди з якими ми працюємо</div>
-					</div>
-					<div data-fls-marquee="" data-fls-marquee-space="0" data-fls-marquee-speed="150" class="brands__marquee">
-						<div class="brands__item">
-							<img alt="ZO Health" src="./assets/img/brands/zo-health.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="iS Clinical" src="./assets/img/brands/is-clinical.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Hydropeptide" src="./assets/img/brands/hydropeptide.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Rejuran" src="./assets/img/brands/rejuran.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Genosys" src="./assets/img/brands/genosys.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Medik8" src="./assets/img/brands/medik8.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Biologique Recherche" src="./assets/img/brands/biologique-recherche.webp">
-						</div>
-						<div class="brands__item">
-							<img alt="Instytutum" src="./assets/img/brands/instytutum.webp">
 						</div>
 					</div>
 				</div>
@@ -386,138 +480,10 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 					<div class="results__container">
 						<h2 class="results__title title">Наші результати</h2>
 						<div class="results__text">До / Після</div>
-						<!-- Slider - Hero -->
+						<!-- Slider - Консультація лікаря-трихолога -->
 						<div data-fls-slider="" class="results__slider slider-results swiper">
 							<div class="slider-results__wrapper swiper-wrapper">
 								<!-- 01 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури лікування акне та постакне — результат №1" src="./assets/img/services/acne-treatment/beforeafter/before-02.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури лікування акне та постакне — результат №1" src="./assets/img/services/acne-treatment/beforeafter/after-02.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 01 -->
-								<!-- 02 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури лікування акне та постакне — результат №2" src="./assets/img/services/acne-treatment/beforeafter/before-01.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури лікування акне та постакне — результат №2" src="./assets/img/services/acne-treatment/beforeafter/after-01.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 02 -->
-								<!-- 03 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури біоревіталізація — результат №1" src="./assets/img/services/biorevitalization/beforeafter/before-03.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури біоревіталізація — результат №1" src="./assets/img/services/biorevitalization/beforeafter/after-03.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 03 -->
-								<!-- 04 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури біоревіталізація — результат №2" src="./assets/img/services/biorevitalization/beforeafter/before-04.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури біоревіталізація — результат №2" src="./assets/img/services/biorevitalization/beforeafter/after-04.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 04 -->
-								<!-- 05 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури лікування дерматитів та псоріазу — результат №1" src="./assets/img/services/dermatitis-treatment/beforeafter/before-01.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури лікування дерматитів та псоріазу — результат №1" src="./assets/img/services/dermatitis-treatment/beforeafter/after-01.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 05 -->
-								<!-- 06 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури лікування дерматитів та псоріазу — результат №2" src="./assets/img/services/dermatitis-treatment/beforeafter/before-02.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури лікування дерматитів та псоріазу — результат №2" src="./assets/img/services/dermatitis-treatment/beforeafter/after-02.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 06 -->
-								<!-- 07 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури видалення новоутворень шкіри — результат №1" src="./assets/img/services/skin-lesion-removal/beforeafter/before-01.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури видалення новоутворень шкіри — результат №1" src="./assets/img/services/skin-lesion-removal/beforeafter/after-01.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 07 -->
-								<!-- 08 -->
-								<div class="slider-results__slide swiper-slide">
-									<div data-fls-beforeafter="" class="results__before-after before-after">
-										<div data-fls-beforeafter-before="" class="before-after__item">
-											<img class="results__picture" alt="До процедури видалення новоутворень шкіри — результат №2" src="./assets/img/services/skin-lesion-removal/beforeafter/before-02.webp">
-										</div>
-										<div data-fls-beforeafter-after="" class="before-after__item">
-											<img class="results__picture" alt="Після процедури видалення новоутворень шкіри — результат №1" src="./assets/img/services/skin-lesion-removal/beforeafter/after-02.webp">
-										</div>
-										<div data-fls-beforeafter-arrow="" class="before-after__arrow">
-											<span class="before-after__arrow-left"></span>
-											<span class="before-after__arrow-right"></span>
-										</div>
-									</div>
-								</div>
-								<!-- 08 -->
-								<!-- 09 -->
 								<div class="slider-results__slide swiper-slide">
 									<div data-fls-beforeafter="" class="results__before-after before-after">
 										<div data-fls-beforeafter-before="" class="before-after__item">
@@ -532,8 +498,8 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 										</div>
 									</div>
 								</div>
-								<!-- 09 -->
-								<!-- 10 -->
+								<!-- 01 -->
+								<!-- 02 -->
 								<div class="slider-results__slide swiper-slide">
 									<div data-fls-beforeafter="" class="results__before-after before-after">
 										<div data-fls-beforeafter-before="" class="before-after__item">
@@ -548,7 +514,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 										</div>
 									</div>
 								</div>
-								<!-- 10 -->
+								<!-- 02 -->
 							</div>
 							<button type="button" class="slider-results__button-prev swiper-button-prev">
 								<svg class="slider-results__icon">
@@ -561,12 +527,7 @@ content="Сучасна клініка краси Nikrasova у Києві. Пр�
 								</svg>
 							</button>
 						</div>
-						<!-- Slider - Hero -->
-					</div>
-				</div>
-				<div data-fls-reviews="" class="page__reviews reviews">
-					<div class="reviews__container">
-						<h2 class="reviews__title title">Відгуки наших клієнітв</h2>
+						<!-- Slider - Консультація лікаря-трихолога -->
 					</div>
 				</div>
 				<div class="circle">

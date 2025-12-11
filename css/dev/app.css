@@ -135,8 +135,12 @@ body {
   font-weight: 400;
 }
 
-.fw--500 {
+.fw--400 {
   font-weight: 400;
+}
+
+.display--grid {
+  display: grid;
 }
 
 .circle {
